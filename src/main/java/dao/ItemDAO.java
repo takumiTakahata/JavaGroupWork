@@ -26,7 +26,7 @@ public class ItemDAO {
 	    return DriverManager.getConnection(dbUrl, username, password);
 	}
 	
-	//アカウントのアイコン登録
+	//アイテム登録
 	public static int registerItem(item item) {
 		String sql = "INSERT INTO item VALUES(default, ?, ?, ?)";
 		int result = 0;
@@ -49,8 +49,8 @@ public class ItemDAO {
 		return result;
 	}
 	
-	//アカウントのアイコン削除
-	public static int deleteAccountImg(int id) {
+	//アイテム削除
+	public static int deleteItem(int id) {
 		String sql = "DELETE FROM item WHERE id = ?";
 		int result = 0;
 		try (
