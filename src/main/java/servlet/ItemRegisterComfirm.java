@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dto.item;
+
 /**
  * Servlet implementation class ItemRegisterComfirm
  */
@@ -35,7 +37,7 @@ public class ItemRegisterComfirm extends HttpServlet {
 		int price = Integer.parseInt(request.getParameter("price"));
 		String comment = request.getParameter("comment");
 		
-		Item item = new Item(-1, name, price, comment);
+		item item = new item(-1, name, price, comment);
 		
 		// セッションスコープのインスタンス取得
 		HttpSession session = request.getSession();

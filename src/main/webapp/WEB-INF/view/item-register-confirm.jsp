@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="dto.Item" %>
+<%@ page import="dto.item" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +11,7 @@
 	<p>下記の内容で登録します。よろしいですか？</p>
 		<%
 			request.setCharacterEncoding("UTF-8");
-			Item item = (Item)session.getAttribute("input_data");
+			item item = (item)session.getAttribute("input_data");
 		%>
 		名前：<%=item.getName() %><br>
 		価格：<%=item.getPrice() %><br>
