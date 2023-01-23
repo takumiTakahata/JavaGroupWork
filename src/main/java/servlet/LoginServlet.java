@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.AccountDAO;
+import dao.JavaGroupdao;
 import dto.Account;
 import util.GenerateHashedPw;
 
@@ -37,7 +37,7 @@ public class LoginServlet extends HttpServlet {
 		String pw = request.getParameter("pw");
 		
 		// 入力されたIDをもとにソルトを取得する。
-		String salt = AccountDAO.getSalt(mail);
+		String salt = JavaGroupdao.getSalt(mail);
 		
 		// 取得したソルトがnullの場合は対象のユーザがいないので、Errorでログイン画面に戻す
 		if(salt == null) {
@@ -53,7 +53,7 @@ public class LoginServlet extends HttpServlet {
 		System.out.println("ログイン時のsalt"+salt);
 		System.out.println("ログイン時のハッシュpw"+hashedPw);
 		// 入力されたID、ハッシュしたPWに一致するユーザを検索する
-		Account account = AccountDAO.login(mail, hashedPw);
+		Account account = JavaGroupdao.login(mail, hashedPw);
 		
 		// 一致するユーザがいなければ、ログイン失敗
 		if(account == null) {
