@@ -13,6 +13,7 @@
 			request.setCharacterEncoding("UTF-8");
 			Item item = (Item)session.getAttribute("input_data");
 		%>
+		
 		名前：<%=item.getName() %><br>
 		価格：<%=item.getPrice() %><br>
 		コメント：<%=item.getComment() %><br>
