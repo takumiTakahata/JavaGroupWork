@@ -1,5 +1,5 @@
 CREATE TABLE item(
-	id integer not null,
+	id serial,
 	name varchar(64) not null,
 	price integer not null,
 	comment varchar(512) not null,
