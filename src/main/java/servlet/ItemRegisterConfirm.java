@@ -15,14 +15,14 @@ import dto.item;
 /**
  * Servlet implementation class ItemRegisterComfirm
  */
-@WebServlet("/ItemRegisterComfirm")
-public class ItemRegisterComfirm extends HttpServlet {
+@WebServlet("/ItemRegisterConfirm")
+public class ItemRegisterConfirm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ItemRegisterComfirm() {
+    public ItemRegisterConfirm() {
         super();
         // TODO Auto-generated constructor stub
     }
