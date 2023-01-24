@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import dto.item;
 
 /**
- * Servlet implementation class ItemRegisterComfirm
+ * Servlet implementation class ItemRegisterConfirm
  */
 @WebServlet("/ItemRegisterConfirm")
 public class ItemRegisterConfirm extends HttpServlet {
@@ -31,7 +31,7 @@ public class ItemRegisterConfirm extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
+request.setCharacterEncoding("UTF-8");
 		
 		String name = request.getParameter("name");
 		int price = Integer.parseInt(request.getParameter("price"));
