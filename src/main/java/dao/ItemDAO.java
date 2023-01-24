@@ -5,7 +5,10 @@ import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import dto.item;
 
@@ -66,6 +69,39 @@ public class ItemDAO {
 			e.printStackTrace();
 		} finally {
 			System.out.println(result + "件更新しました。");
+		}
+		return result;
+	}
+	
+//	アイテム一覧機能
+
+	public static List<item> selectAllItem() {
+
+		String sql = "SELECT * FROM item";
+
+		List<item> result = new ArrayList<>();
+
+		try (Connection con = getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
+
+			try (ResultSet rs = pstmt.executeQuery()) {
+
+				while (rs.next()) {
+
+					// n行目のデータを取得
+					int id = rs.getInt("id");
+					String name = rs.getString("name");
+					int price = rs.getInt("price");
+					String comment = rs.getString("comment");
+
+					item item = new item(id, name, price, comment);
+
+					result.add(item);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
 		}
 		return result;
 	}
