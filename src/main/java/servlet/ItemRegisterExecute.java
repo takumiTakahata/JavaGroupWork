@@ -10,19 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.ItemDAO;
 import dto.item;
 
 /**
- * Servlet implementation class ItemRegisterComfirm
+ * Servlet implementation class ItemRegisterExecute
  */
-@WebServlet("/ItemRegisterComfirm")
-public class ItemRegisterComfirm extends HttpServlet {
+@WebServlet("/ItemRegisterExecute")
+public class ItemRegisterExecute extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ItemRegisterComfirm() {
+    public ItemRegisterExecute() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,21 +32,21 @@ public class ItemRegisterComfirm extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
 		
-		String name = request.getParameter("name");
-		int price = Integer.parseInt(request.getParameter("price"));
-		String comment = request.getParameter("comment");
-		
-		item item = new item(-1, name, price, comment);
-		
-		// セッションスコープのインスタンス取得
 		HttpSession session = request.getSession();
+		item item = (item)session.getAttribute("input_data");
 		
-		session.setAttribute("input_data", item);
+		// 登録処理
+		int result = ItemDAO.registerItem(item);
 		
-		String view = "WEB-INF/view/item-register-confirm.jsp";
-		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
+		String path = "";
+		if(result == 1) {
+			path = "WEB-INF/view/success.jsp";
+		} else {
+			// 失敗した場合はパラメータ付きで登録画面に戻す
+			path = "WEB-INF/view/item-register.jsp?error=1";
+		}
+		RequestDispatcher dispatcher = request.getRequestDispatcher(path);
 		dispatcher.forward(request, response);
 	}
 
