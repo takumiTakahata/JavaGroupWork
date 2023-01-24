@@ -36,7 +36,7 @@ public class ItemDAO {
 				){
 			pstmt.setString(1, item.getName());
 			pstmt.setInt(2, item.getPrice());
-			pstmt.setString(3, item.getName());
+			pstmt.setString(3, item.getComment());
 
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {

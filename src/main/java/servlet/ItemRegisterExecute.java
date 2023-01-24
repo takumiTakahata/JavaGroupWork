@@ -41,7 +41,7 @@ public class ItemRegisterExecute extends HttpServlet {
 		
 		String path = "";
 		if(result == 1) {
-			path = "WEB-INF/view/success.jsp";
+			path = "WEB-INF/view/index.jsp";
 		} else {
 			// 失敗した場合はパラメータ付きで登録画面に戻す
 			path = "WEB-INF/view/item-register.jsp?error=1";
