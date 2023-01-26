@@ -42,7 +42,7 @@ public class RegisterAccountExecuteServlet extends HttpServlet {
 		if(result == 1) {
 			session.removeAttribute("input_data");
 			
-			path = "WEB-INF/view/account-register-success.jsp";
+			path = "WEB-INF/view/success.jsp";
 		} else {
 			path = "WEB-INF/view/account-register.jsp?error=1";
 		}
