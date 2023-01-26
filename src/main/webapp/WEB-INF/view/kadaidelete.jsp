@@ -10,8 +10,8 @@
 <body>
 <h2>削除画面</h2>
 	<form action="DeleteCompanyServlet" method="post">
-		<p>削除したいものの名前を入力してください</p>
-		名前：<input type="text" name="name"><br>
+		<p>削除したい商品のIDを入力してください</p>
+		ID：<input type="text" name="id"><br>
 		<input type="submit" value="削除">
 	</form>
 </body>

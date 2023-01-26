@@ -8,7 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import dao.ItemDAO;
 
@@ -26,19 +25,21 @@ public class DeleteCompanyServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	 */ 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//処理の始めにログイン状態のチェックを行う。
-		HttpSession session = request.getSession();
-		ItemDAO account = (ItemDAO)session.getAttribute("user");
-
-		if(account == null){
+		
+		request.setCharacterEncoding("UTF-8");
+		
+		String ids = request.getParameter("id");
+		int id = Integer.parseInt(ids);
+		int result = ItemDAO.deleteItem(id);
+		if(result == 1){
 			//セッションの中身がnullであれば不正アクセスと判断し
 			//ログイン画面へ戻る
-			String view = "./";
+			String view = "WEB-INF/view/deletesucces.jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 			dispatcher.forward(request, response);
 			return;
