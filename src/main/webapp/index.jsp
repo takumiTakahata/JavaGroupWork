@@ -13,5 +13,6 @@
 	<a href="LoginFormServlet">ログイン</a>
 	<a href="ItemRegister">アイテム登録</a>
 	<a href="ItemSelectAll">アイテム一覧</a>
+	<a href="DeleteCompany">アイテム削除</a>
 </body>
 </html>
